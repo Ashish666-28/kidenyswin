@@ -1,0 +1,20 @@
+# Runtime dependencies for app.py and the project's terminal tools.
+# Use Python 3.12. pip resolves each package's transitive dependencies.
+Flask>=3.1,<4
+Werkzeug>=3.1,<4
+waitress>=3,<4
+python-dotenv>=1.0,<2
+Pillow>=10,<13
+python-docx>=1.1,<2
+scikit-learn>=1.5,<2
+numpy>=1.26,<3
+torch>=2.6,<3
+langchain-google-genai>=4,<5
+pandas
+scipy
+matplotlib
+nibabel
+pydicom
+requests
+reportlab>=4,<6
+httpx>=0.28,<1

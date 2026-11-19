@@ -1,0 +1,43 @@
+# Environment variables and secrets - NEVER COMMIT
+.env
+*.env
+.env.*
+!.env.example
+
+# Python virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+
+# Editor & IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Operating System files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Temporary outputs & logs
+*.log
+/tmp/
+tmp/
+*.tmp
+prediction_output/
+results/
+pdfs/
+
+# Deployment & build artifacts
+.vercel/
+dist/
+build/
+*.egg-info/

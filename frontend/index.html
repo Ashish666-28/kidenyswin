@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KidneyVision</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script defer src="/js/script.js"></script>
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <div>
+                <h1>KidneyVision</h1>
+                <p>CT analysis and kidney knowledge assistant</p>
+            </div>
+        </div>
+        <span class="topbar-badge"><span aria-hidden="true"></span>Kidney CT model analysis</span>
+    </header>
+
+    <main class="workspace">
+        <div class="scan-column">
+            <section class="scan-panel tilt-surface" aria-labelledby="scan-heading">
+                <header class="panel-heading">
+                    <span class="panel-icon" aria-hidden="true">▧</span>
+                    <div>
+                        <h2 id="scan-heading">CT scan analysis</h2>
+                        <p>Upload a kidney CT image to analyze</p>
+                    </div>
+                </header>
+                <div class="scan-content">
+                    <button type="button" id="upload-box" class="upload-box" aria-label="Choose or replace CT image">
+                        <span id="upload-placeholder">
+                            <span class="upload-icon" aria-hidden="true">↑</span>
+                            <span class="upload-title">Your CT image appears here</span>
+                            <span class="upload-subtitle">Choose a PNG or JPG image, up to 10 MB. Large images are resized for upload.</span>
+                        </span>
+                        <img id="image-preview" alt="Selected CT scan preview" hidden>
+                        <span id="segmentation-preview" class="segmentation-preview" hidden>
+                            <span class="segmentation-view">
+                                <img id="segmentation-overlay" alt="CT image with predicted stone, tumor and cyst regions highlighted" hidden>
+                                <span>Highlighted CT</span>
+                            </span>
+                            <span class="segmentation-view">
+                                <img id="segmentation-mask" alt="Predicted stone, tumor and cyst segmentation mask">
+                                <span>Segmentation mask</span>
+                            </span>
+                        </span>
+                        <span class="preview-glow" aria-hidden="true"></span>
+                        <span id="upload-change" class="upload-change" hidden>Click to replace image</span>
+                    </button>
+                    <div class="scan-summary">
+                        <div class="results compact-result" role="region" aria-label="Classification result" hidden>
+                            <div class="result-body" id="result-body" hidden>
+                                <div class="result-primary">
+                                    <span>Predicted class</span>
+                                    <strong id="result-class">&#8212;</strong>
+                                </div>
+                                <div class="result-score">
+                                    <span>Model score</span>
+                                    <strong id="result-score">&#8212;</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <a id="download-segmentation" class="button secondary pdf-download" download="kidneyvision-segmentation.pdf" hidden>Download PDF</a>
+                    </div>
+                    <p id="result-status" class="sr-only" aria-live="polite">Your result will appear after analysis.</p>
+                    <input type="file" id="image-input" accept="image/png,image/jpeg" hidden>
+                    <div class="upload-actions">
+                        <button type="button" id="choose-image" class="button secondary">Choose CT image</button>
+                        <button type="button" id="analyze-image" class="button primary" disabled>Analyze image <span aria-hidden="true">→</span></button>
+                    </div>
+                    <p id="file-name" class="file-name">No image selected</p>
+                    <p id="upload-error" class="error" role="alert"></p>
+                </div>
+            </section>
+        </div>
+
+        <section class="chat-panel tilt-surface" aria-labelledby="chat-heading">
+            <header class="chat-header">
+                <div class="avatar" aria-hidden="true">K</div>
+                <div>
+                    <h2 id="chat-heading">Kidney Assistant</h2>
+                </div>
+            </header>
+            <div id="chat-messages" class="chat-messages" role="log" aria-live="polite" aria-relevant="additions">
+                <div class="date-label">Today</div>
+                <div class="message incoming">
+                    <p>Hello! You can ask kidney-health questions or upload a CT image for an explanation of its result.</p>
+                    <span class="message-label">Kidney Assistant</span>
+                </div>
+            </div>
+            <div class="chat-composer">
+                <label for="chat-input" class="sr-only">Your kidney-health question</label>
+                <div class="composer-row">
+                    <textarea id="chat-input" rows="1" maxlength="3000"
+                              placeholder="Ask a kidney-health question..." disabled></textarea>
+                    <button type="button" id="send-message" class="send-button"
+                            aria-label="Send message" disabled>&#10148;</button>
+                </div>
+                <p id="chat-status" class="chat-status" aria-live="polite">Connecting...</p>
+            </div>
+        </section>
+    </main>
+    <noscript><p class="error">Enable JavaScript to use image analysis and chat.</p></noscript>
+</body>
+</html>
+
